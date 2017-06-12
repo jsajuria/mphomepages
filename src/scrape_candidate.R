@@ -1,4 +1,4 @@
-setwd("D:/candidate")
+setwd("~/Desktop/Candidate websites 2017")
 dir.create()
 
 current.date <- substr(date(),5, 10)
@@ -7,20 +7,20 @@ dir.create(current.date)
 setwd(current.date)
 
 if(Sys.info()["sysname"]=="Linux") {
-	download.file("https://yournextmp.com/media/candidates.csv", 
-								destfile = "candidates.csv",
-								method="curl")
-	candidates <- read.csv("candidates.csv",
-												 stringsAsFactors = FALSE)	
+  download.file("https://candidates.democracyclub.org.uk/media/candidates-parl.2017-06-08.csv", 
+                destfile = "candidates-parl.2017-06-08.csv",
+                method="curl")
+  candidates <- read.csv("candidates.csv",
+                         stringsAsFactors = FALSE)	
 } else {
-	source("C:/Users/Jon/Documents/mphomepages/src/scrape_functions.R")	
-	candidates <- read.csv("https://yournextmp.com/media/candidates.csv",
-												 stringsAsFactors = FALSE)
-	
+  source("~/Desktop/Candidate websites 2017/scrape_functions.R")	
+  candidates <- read.csv("https://candidates.democracyclub.org.uk/media/candidates-parl.2017-06-08.csv",
+                         stringsAsFactors = FALSE)
+  
 }
 
 for(i in 1:nrow(candidates)) {
-	candidate.row <- candidates[i, ]
-	print(candidate.row$name)
-	try(scrapeCandidateWebsite(candidate.row = candidate.row)	)
+  candidate.row <- candidates[i, ]
+  print(candidate.row$name)
+  try(scrapeCandidateWebsite(candidate.row = candidate.row)	)
 }

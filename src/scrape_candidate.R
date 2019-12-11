@@ -1,4 +1,4 @@
-setwd("~/Desktop/Candidate websites 2017")
+setwd("C:/Users/Javier/Dropbox/Sajuria/MPs website 2019")
 dir.create()
 
 current.date <- substr(date(),5, 10)
@@ -7,14 +7,14 @@ dir.create(current.date)
 setwd(current.date)
 
 if(Sys.info()["sysname"]=="Linux") {
-  download.file("https://candidates.democracyclub.org.uk/media/candidates-parl.2017-06-08.csv", 
+  download.file("https://candidates.democracyclub.org.uk/media/candidates-2019-12-12.csv", 
                 destfile = "candidates-parl.2017-06-08.csv",
                 method="curl")
   candidates <- read.csv("candidates.csv",
                          stringsAsFactors = FALSE)	
 } else {
-  source("~/Desktop/Candidate websites 2017/scrape_functions.R")	
-  candidates <- read.csv("https://candidates.democracyclub.org.uk/media/candidates-parl.2017-06-08.csv",
+  source("../scrape_functions.R")	
+  candidates <- read.csv("https://candidates.democracyclub.org.uk/media/candidates-2019-12-12.csv",
                          stringsAsFactors = FALSE)
   
 }
